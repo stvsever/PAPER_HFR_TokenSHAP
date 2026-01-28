@@ -1,0 +1,67 @@
+{
+  "run_id": "20260126_212452",
+  "created_at": "2026-01-26T23:31:16",
+  "phenotype": "DEPRESSION",
+  "model_name": "Qwen/Qwen2-0.5B-Instruct",
+  "n_profiles": 100,
+  "relevant_features": [
+    "sleep_quality",
+    "childhood_trauma_exposure"
+  ],
+  "distractor_features": [
+    "color_blue",
+    "chicken_soup",
+    "computer",
+    "floor",
+    "window",
+    "pencil",
+    "bicycle",
+    "cloud"
+  ],
+  "feature_ids": [
+    "sleep_quality",
+    "childhood_trauma_exposure",
+    "color_blue",
+    "chicken_soup",
+    "computer",
+    "floor",
+    "window",
+    "pencil",
+    "bicycle",
+    "cloud"
+  ],
+  "surface_text": {
+    "sleep_quality": "sleep quality",
+    "childhood_trauma_exposure": "childhood trauma exposure",
+    "color_blue": "color blue",
+    "chicken_soup": "chicken soup",
+    "computer": "computer",
+    "floor": "floor",
+    "window": "window",
+    "pencil": "pencil",
+    "bicycle": "bicycle",
+    "cloud": "cloud"
+  },
+  "true_w": {
+    "sleep_quality": 1.0,
+    "childhood_trauma_exposure": 1.0,
+    "color_blue": 0.0,
+    "chicken_soup": 0.05,
+    "computer": -0.08,
+    "floor": 0.02,
+    "window": 0.0,
+    "pencil": -0.12,
+    "bicycle": 0.07,
+    "cloud": -0.03
+  },
+  "ig_steps": 8,
+  "shapley_k": 5,
+  "shapley_runs": 3,
+  "paths": {
+    "tables_dir": "/Users/stijnvanseveren/PythonProjects/IIS_BIOBIZKAIA/INFERENCE_PIPELINE/utils/helpers/feature_importance_estimation/demonstration_results/tables",
+    "subjects_csv": "/Users/stijnvanseveren/PythonProjects/IIS_BIOBIZKAIA/INFERENCE_PIPELINE/utils/helpers/feature_importance_estimation/demonstration_results/tables/subjects_20260126_212452.csv",
+    "features_csv": "/Users/stijnvanseveren/PythonProjects/IIS_BIOBIZKAIA/INFERENCE_PIPELINE/utils/helpers/feature_importance_estimation/demonstration_results/tables/features_20260126_212452.csv",
+    "importance_csv": "/Users/stijnvanseveren/PythonProjects/IIS_BIOBIZKAIA/INFERENCE_PIPELINE/utils/helpers/feature_importance_estimation/demonstration_results/tables/importance_20260126_212452.csv",
+    "shapley_runs_csv": "/Users/stijnvanseveren/PythonProjects/IIS_BIOBIZKAIA/INFERENCE_PIPELINE/utils/helpers/feature_importance_estimation/demonstration_results/tables/shapley_runs_20260126_212452.csv"
+  }
+}

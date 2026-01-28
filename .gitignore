@@ -1,0 +1,32 @@
+cat > .gitignore << 'EOF'
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# venv
+.venv/
+venv/
+
+# OS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local env / secrets
+.env
+.env.*
+
+# Hugging Face / Transformers cache (local-only)
+.cache/
+**/.cache/
+~/.cache/huggingface/
+
+# If you generate large logs
+*.log
+EOF
