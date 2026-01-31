@@ -7,15 +7,6 @@ Purpose
 Visualize the *percentage reduction* in value-function (LLM) evaluations achieved by aHFR-TokenSHAP
 relative to Flat TokenSHAP, using the evaluation-count logic in aHFR_TokenSHAP.py.
 
-Updates requested
-----------------
-1) Add a striped (hatched) vertical black band in the L subplot at L = T (token-level limit).
-2) Add an analogous striped (hatched) vertical black band in the T subplot at T = L (same boundary, but
-   on the T-axis).
-3) Save 5 PNGs total:
-   - 4 single-panel figures (K, T, L, P)
-   - 1 combined 2x2 figure
-
 Outputs
 -------
 - plot_vs_K.png
