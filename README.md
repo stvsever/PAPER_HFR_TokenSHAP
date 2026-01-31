@@ -1,42 +1,42 @@
-# HFR-TokenSHAP: A TokenSHAP-extended Algorithm for Hierarchical Feature Importance Estimation
+# aHFR-TokenSHAP  
+**Adaptive Hierarchically Feature-Restricted TokenSHAP for Binary Classification with Large Language Models**
 
+This repository provides a **reproducible demonstration** of *feature-level* attribution for LLM-based **binary phenotype classification** prompts rendered from structured (hierarchical) records—together with the accompanying manuscript and technical note.
 
-This repository provides a **reproducible demonstration** of *feature-level* attribution for LLM-based binary phenotype classification prompts, together with the accompanying manuscript PDF.
-
-**Manuscript (PDF):** `paper_HFR_TokenSHAP.pdf`  
+**Manuscript (PDF):** `paper_aHFR_TokenSHAP.pdf`  
+**Technical note (PDF):** `technical_note_complexity_reduction.pdf`  
 **Repository:** `stvsever/PAPER_HFR_TokenSHAP`
 
 ---
 
-## Abstract (Repository-level)
+## Motivation
 
-Token-level attribution methods (e.g., gradient-based saliency) can assign high importance to prompt scaffolding (e.g., headers, separators, boilerplate) even when the scientific question is **which structured features drive the decision**. **HFR-TokenSHAP** restricts Shapley “players” to semantically meaningful **feature nodes** (optionally organized into hierarchical groups) and evaluates contributions via a **decision-aligned value function** (e.g., label log-odds). The result is an explanation over *feature units* rather than over all prompt tokens. This hierarchically restricted feature (HFR) extension reduces the computational burden of Monte Carlo Shapley estimation by restricting the sampling space to feature-level hierarchy nodes, rather than individual prompt tokens that are not the explanatory object of interest.
+Large language models (LLMs) are increasingly used as inference engines over **structured phenotypic records** rendered into prompt templates (e.g., clinical risk-factor fields). In this regime, **token-level attribution** methods can over-attribute prompt **scaffolding** (headers, separators, boilerplate instructions) that is necessary for instruction-following but **not** the explanatory object of interest.
+
+This repository focuses on **feature-level explanations**: *which structured features (and which feature domains) drive the model’s binary decision?*
 
 ---
 
-## Figure: Example Prompt Overlay
+## Method in one paragraph
 
-The following figure 1 shows a qualitative example prompt with an overlay of feature-importance scores (Integrated Gradients vs. HFR-TokenSHAP-style restricted Shapley), illustrating increased emphasis on clinically relevant features such as `sleep_quality` and `childhood_trauma_exposure` relative to distractor “word-features”.
+We introduce **aHFR-TokenSHAP**, a task-specific extension of TokenSHAP for **binary classification prompts** in which (i) the value function is the model’s binary decision score defined as **label log-odds** (rather than response-similarity between generated texts), and (ii) Shapley “players” are **template-aligned leaf features** organized by a **pre-specified hierarchy** rather than all prompt tokens. aHFR-TokenSHAP further incorporates an **adaptive, hierarchy-constrained permutation generator**: permutations are constructed via mixed-depth hierarchical frontiers, initialized by a short primary-layer calibration and updated across epochs to concentrate sampling on influential subtrees while preserving Shapley–Shubik marginal-contribution semantics. We validate aHFR-TokenSHAP in a controlled random hierarchical feature-injection experiment with 10 parent domains and 30 leaf features across 100 pseudo-profiles, and compare against (a) an internal baseline (**Integrated Gradients** on the same log-odds score, aggregated over value-only spans) and (b) an external knowledge-prior baseline (**LLM-Select**-style feature-name scoring).
+
+---
+
+## Figure: Example prompt overlay
+
+Figure 1 shows a qualitative example prompt with an overlay of weighted feature-importance scores (Integrated Gradients + aHFR-TokenSHAP-style restricted Shapley's), illustrating increased emphasis on clinically relevant features relative to distractor “word-features”.
 
 ![Example prompt overlay](https://github.com/stvsever/PAPER_HFR_TokenSHAP/blob/main/demonstration_results/visuals/example_prompt_overlay.png)
 
 ---
 
-## Repository Structure
+## Quickstart
 
-- `utils/demo_run.py`  
-  Main entry point. Generates pseudo-profiles, constructs prompts, computes:
-  1) Integrated Gradients (IG) feature importances,  
-  2) Monte Carlo Shapley feature importances under a *feature-restricted* player set (HFR-TokenSHAP-style),  
-  and writes tables/plots to `TABLES_DIR`.
+### 1) Create an environment & install dependencies
+```bash
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# .venv\Scripts\activate   # Windows PowerShell
 
-- `utils/ig_attribution.py`  
-  Model loading utilities, decision scoring (e.g., log-odds), and IG helper functions.
-
-- `utils/group_shapley.py`  
-  Monte Carlo Shapley estimation via permutation sampling over feature “players” (with optional grouping / hierarchical restriction).
-
-- `demonstration_results/`  
-  Generated tables and visuals (e.g., prompt overlays, aggregated plots).
-
----
+pip install -r requirements.txt
