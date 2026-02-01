@@ -23,7 +23,7 @@ We introduce **aHFR-TokenSHAP**, a task-specific extension of TokenSHAP for **bi
 
 ---
 
-## Pseudocode of Algorithm
+## Pseudocode of the aHFR-TokenSHAP algorithm
 
 ![Pseudocode of algorithm](https://github.com/stvsever/aHFR_TokenSHAP/blob/main/demonstration_results/visuals/pseudocode_aHFR_TokenSHAP_algorithm.png)
 
