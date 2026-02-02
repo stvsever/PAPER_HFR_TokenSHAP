@@ -5,7 +5,7 @@ This repository provides a **reproducible demonstration** of *feature-level* att
 
 **Manuscript (PDF):** `paper_aHFR_TokenSHAP.pdf`  
 **Technical note (PDF):** `technical_note_complexity_reduction.pdf`  
-**Repository:** `stvsever/PAPER_HFR_TokenSHAP`
+**Repository:** `stvsever/aHFR_TokenSHAP`
 
 ---
 
